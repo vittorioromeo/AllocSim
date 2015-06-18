@@ -1,4 +1,4 @@
 #!/bin/bash
 
-latexpp ./thesis.lpp > ./thesis.tex
-pdflatex -shell-escape ./thesis.tex && pdflatex -shell-escape ./thesis.tex && chromium ./thesis.pdf
+latexpp ./manual.lpp > ./manual.tex
+pdflatex -shell-escape ./manual.tex && pdflatex -shell-escape ./manual.tex && chromium ./manual.pdf
