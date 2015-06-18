@@ -180,6 +180,10 @@ class Allocator:
         # If no block was found, 'mX' is an invalid value
         raise Exception("'mX' is an invalid value")
 
+    # Returns a list containing all the free blocks (boundary-tag)
+    def getBoundaryTagList(self):
+    	return [b for b in self.blocks if b.occupied == False]
+
     # Inserts a block in the sorted list, in the correct position
     def insertSorted(self, mX):
         i = 0
