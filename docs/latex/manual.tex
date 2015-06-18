@@ -10,12 +10,6 @@
 \usepackage{minted}
 \usepackage[utf8]{inputenc}
 
-%!group(cpp)(\begin{minted}[mathescape, linenos, numbersep=5pt, gobble=2, frame=lines, framesep=2mm, fontsize=\footnotesize]{cpp})(\end{minted})
-%!group(php)(\begin{minted}[mathescape, linenos, numbersep=5pt, gobble=2, frame=lines, framesep=2mm, fontsize=\footnotesize]{php})(\end{minted})
-%!group(sql)(\begin{minted}[mathescape, linenos, numbersep=5pt, gobble=2, frame=lines, framesep=2mm, fontsize=\footnotesize]{sql})(\end{minted})
-%!group(bash)(\begin{minted}[mathescape, linenos, numbersep=5pt, gobble=2, frame=lines, framesep=2mm, fontsize=\footnotesize]{bash})(\end{minted})
-%!group(json)(\begin{minted}[mathescape, linenos, numbersep=5pt, gobble=2, frame=lines, framesep=2mm, fontsize=\footnotesize]{json})(\end{minted})
-%!group(python)(\begin{minted}[mathescape, linenos, numbersep=5pt, gobble=2, frame=lines, framesep=2mm, fontsize=\footnotesize]{python})(\end{minted})
 
 \graphicspath{ {res/} }
 \setcounter{secnumdepth}{4}
@@ -144,10 +138,9 @@
 
             Per avviare l'applicazione in \emph{modalità manuale} è sufficiente lanciarla da linea di comando senza parametri:
 
-            !!(bash)
-            !!{
+            \begin{minted}[mathescape, linenos, numbersep=5pt, gobble=2, frame=lines, framesep=2mm, fontsize=\footnotesize]{bash}
                 ./project.py
-            !!}
+            \end{minted}
 
             Dopo aver avviato il programma, l'utente vedrà il seguente menù:
 
@@ -163,11 +156,10 @@
 
             Per avviare l'applicazione in \emph{modalità automatica} è sufficiente lanciarla da linea di comando con il numero di simulazioni desiderato:
 
-            !!(bash)
-            !!{
+            \begin{minted}[mathescape, linenos, numbersep=5pt, gobble=2, frame=lines, framesep=2mm, fontsize=\footnotesize]{bash}
                 # Esempio (3 simulazioni) 
                 ./project.py 3
-            !!}
+            \end{minted}
 
             Dopo aver avviato il programma, le simulazioni partiranno automaticamente ed il loro funzionamento sarà mostrato sia a video che su log.
 
