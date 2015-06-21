@@ -334,6 +334,9 @@ class Allocator:
 
     # Return a number representing the average fragmentation of the allocator
     def getFragmentation(self):
+        # TODO: replace with
+        # 1 - ( blocco più grande / totale memoria libera )
+
         if self.blocks == False:
             return 0
 
