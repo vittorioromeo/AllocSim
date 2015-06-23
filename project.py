@@ -82,7 +82,7 @@ def getInputInt():
             result = int(raw_input())
         except ValueError:
             loC(Color.red)
-            lo("\nInserted value invalid - retry")
+            lo("\nInserted value invalid - retry\n")
             loCD()
         else:
             break
@@ -182,7 +182,7 @@ class Allocator:
 
     # Returns a list containing all the free blocks (boundary-tag)
     def getBoundaryTagList(self):
-    	return [b for b in self.blocks if b.occupied == False]
+        return [b for b in self.blocks if b.occupied == False]
 
     # Inserts a block in the sorted list, in the correct position
     def insertSorted(self, mX):
@@ -485,13 +485,21 @@ def getInputMemorySize(mMax):
 
 # Get a valid simulation count fro the user
 def getInputSimulationCount():
-    loCD()
-    lo("\nInsert number of ")
-    loC(Color.cyan)
-    lo("simulations: ")
-    loCD()
-    numSim = int(raw_input())
-    lo("\n")
+    numSim = 0
+
+    try:
+        loCD()
+        lo("\nInsert number of ")
+        loC(Color.cyan)
+        lo("simulations: ")
+        loCD()
+        numSim = int(raw_input())
+        lo("\n")        
+    except ValueError:
+            loC(Color.red)
+            lo("\nInserted value invalid - retry\n")
+            loCD()
+   
 
     return numSim
 
@@ -544,10 +552,15 @@ class Menu:
 
     # Select one of the choice from user input
     def selectChoice(self):
-        inputNumber = getInputInt()
+        while True:
+            inputNumber = getInputInt()
+            if inputNumber < len(self.choices) and inputNumber >= 0:
+                break  
+
         c = self.choices[inputNumber]
         c.loSelection()
         c.action()
+
         return inputNumber
 
 # Class representing a single process
@@ -705,6 +718,11 @@ def loTotalResult(mX, mName):
 
 # Run 'mCount' simulations on an allocator and report statistics
 def runSimulations(mAllocator, mCount):
+    if mCount <= 0 or mCount > 10000:
+        loC(Color.red)
+        lo("Invalid simulation count\n")
+        return
+
     res_firstFit = []
     res_nextFit = []
     res_bestFitN = []
@@ -810,7 +828,7 @@ def runSimulations(mAllocator, mCount):
 
 # Manual execution, display a menu with choices
 def mainManual(mAllocator):
-    inputSz = lambda: getInputMemorySize(size)
+    inputSz = lambda: getInputMemorySize(mAllocator.size)
 
     m = Menu()
     m.add("First-fit",               lambda: mAllocator.insertFirstFit(inputSz()))
@@ -831,7 +849,13 @@ def mainManual(mAllocator):
 
 # Automatic execution, runs a number of simulations passed as a program argument
 def mainAutomatic(mAllocator):
-    runSimulations(mAllocator, int(sys.argv[1]))
+    try:
+        runSimulations(mAllocator, int(sys.argv[1]))
+    except ValueError:
+            loC(Color.red)
+            lo("\nInserted value invalid - retry\n")
+            loCD()
+   
     sys.exit()
 
 # Initialize an 'Allocator' an start manual or automatic execution
