@@ -9,6 +9,7 @@ import random
 import copy
 import os
 import sys
+import re
 
 # Generated a random number between 'mMin' and 'mMax'
 # 'mMin' is inclusive, 'mMax' is exclusive
@@ -60,8 +61,9 @@ def loCD():
 
 # Print both to log and console
 def lo(x):
-    logFile.write(x + "\n")
     sys.stdout.write(x)
+    x = re.sub("\\033\[.*?m", '', x)
+    logFile.write(x)
 
 # Print a separator line
 def loLn():
@@ -712,7 +714,6 @@ def loTotalResult(mX, mName):
     rstr = Color.default + "TOTAL Results for " + Color.lred + mName + ":\n" + Color.default
     rstr += "\t" + Color.lred + "Avg. comparisons: " + Color.default + str(accComp / len(mX)) + "\n"
     rstr += "\t" + Color.lred + "Avg. fragmentation: " + Color.default + str(accFrag / len(mX)) + "\n\n"
-    # rstr += "\t" + Color.lred + "Score: " + Color.default + str(accScor / len(mX)) + "\n\n"
 
     lo(rstr)
 
@@ -804,8 +805,6 @@ def runSimulations(mAllocator, mCount):
 
         loC(Color.cyan)
         lo("\nResults:\n\n")
-        # loCD()
-        # lo("(lower score = better)\n\n")
 
         # Print out the results of the simulations
         for r in simResults:
