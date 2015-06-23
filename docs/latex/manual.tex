@@ -108,11 +108,39 @@
         \end{itemize}        
 
     \section{Design ed implementazione}
-        L'applicazione è stata implementata utilizzando il linguaggio di programmazione \emph{Python 2.6}.
+        
+        \subsection{Ambiente e tool di sviluppo}
+
+            L'applicazione è stata implementata utilizzando il linguaggio di programmazione \emph{Python 2.6}.
+            L'ambiente di sviluppo utilizzato è \emph{Arch Linux x64}.
+            L'editor utilizzato per la stesura del codice è \emph{Sublime Text 3}.
+
+            Il codice del progetto è open-source e disponibile pubblicamente sotto licenza \emph{MIT} su \emph{GitHub} al seguente indirizzo:
+
+                \url{https://github.com/SuperV1234/AllocSim}
+
+            Il documento corrente è stato scritto usando \LaTeX{}, un sistema tipografico di alta qualità con numerose caratteristiche che agevolano la stesura di documenti \emph{scientifici} e riguardanti la \emph{programmazione}.
+
+
+            Un piccolo preprocessore \LaTeX{} scritto in \emph{C++14}  chiamato \emph{LatexPP} è stato sviluppato ed utilizzato per la creazione di questo documento.
+
+            LatexPP permette di usare una sintassi intuitiva che evita la ripetizione di markup per l'highlighting del codice e delle macro.
+
+            La preprocessione e compilazione di un documento \LaTeX{} usando LatexPP è stata automatizzata usando il seguente script \emph{bash}.
+
+            \begin{minted}[mathescape, linenos, numbersep=5pt, gobble=2, frame=lines, framesep=2mm, fontsize=\footnotesize]{bash}
+    #!/bin/bash
+
+    latexpp ./manual.lpp > ./manual.tex
+    pdflatex -shell-escape ./manual.tex && chromium ./manual.pdf
+            \end{minted}
+
+
+        \subsection{Architettura applicazione}
 
         L'architettura dell'applicazione è stata designata utilizzando \emph{principi OOP} (Object-Oriented Programming) e massimizzando la riusabilità delle classi.
 
-        Nella lista seguente sono riportati gli elementi che compongono l'architettura e il modo in cui sono relazionati:
+        Nella lista seguente sono riportati gli elementi che compongono l'architettura e il modo in cui sono relazionati, insieme a frammenti di codice che mostrano l'interfaccia delle classi più importanti dell'applicativo:
 
         \begin{itemize}
             \item \emph{Blocco di memoria}: classe Python \mintinline{python}{Block} - rappresenta porzione dell'area di memoria presente nell'\emph{Allocatore}. Può essere \emph{occupato} o \emph{libero}, ha un \emph{byte di inizio} ed un \emph{byte di fine}.
@@ -247,6 +275,9 @@
             \item \emph{Set di risultati}: instanziato e stampato alla fine di una \emph{simulazione}. Contiene informazioni riguardo il \emph{numero di comparazioni}, \emph{frammentazione media} e \emph{punteggio totale} di ogni \emph{algoritmo} testato durante la simulazione. Minore il punteggio, più efficiente l'algoritmo.
         \end{itemize}
 
+
+        \subsection{Modalità d'uso}
+
         L'applicativo può essere eseguito in due modalità: \emph{modalità manuale} e \emph{modalità automatica}.
 
         \begin{itemize}
@@ -377,4 +408,21 @@
                 \item l'algoritmo \emph{best-fit} (sia naive che con sorted-list) ha sempre \emph{frammentazione esterna minore} rispetto all'algoritmo \emph{worst-fit} (sia naive che sorted-list). Il numero di comparazioni tra i due non è legato alla scelta dell'algoritmo ma alla generazione randomica dei processi - il \emph{worst-fit} può avere meno comparazioni del \emph{best-fit} e viceversa.
             \end{itemize}
 
+        \section{Link e riferimenti}
+
+            Nella stesura di questo documento e nell'implementazione del progetto AllocSim i seguenti riferimenti sono stati utilizzati:
+
+            \begin{itemize}
+                \item Operating System Concepts - Silberschatz: \url{http://os-book.com/}
+                \item Wikipedia: Memory management: \url{https://en.wikipedia.org/?title=Memory_management}
+                \item Wikipedia: Fragmentation: \url{https://en.wikipedia.org/wiki/Fragmentation_(computing)}
+                \item ShareLaTeX learn: \url{https://www.sharelatex.com/learn}
+                \item Wikipedia - Software engineering: \url{http://en.wikipedia.org/wiki/Software_engineering}
+                \item Sito web UNIME: \url{http://unime.it}
+                \item Il mio sito personale: \url{https://vittorioromeo.info}
+                \item LatexPP su GitHub: \url{https://github.com/SuperV1234/Experiments}
+                \item Documentazione Git: \url{https://git-scm.com/documentation}            
+                \item GitHub: \url{https://github.com/}
+                \item Wiki di Arch Linux: \url{https://wiki.archlinux.org/}
+            \end{itemize}
 \end{document}

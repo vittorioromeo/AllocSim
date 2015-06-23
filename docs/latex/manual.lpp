@@ -147,7 +147,7 @@
 
         L'architettura dell'applicazione è stata designata utilizzando \emph{principi OOP} (Object-Oriented Programming) e massimizzando la riusabilità delle classi.
 
-        Nella lista seguente sono riportati gli elementi che compongono l'architettura e il modo in cui sono relazionati:
+        Nella lista seguente sono riportati gli elementi che compongono l'architettura e il modo in cui sono relazionati, insieme a frammenti di codice che mostrano l'interfaccia delle classi più importanti dell'applicativo:
 
         \begin{itemize}
             \item \emph{Blocco di memoria}: classe Python \mintinline{python}{Block} - rappresenta porzione dell'area di memoria presente nell'\emph{Allocatore}. Può essere \emph{occupato} o \emph{libero}, ha un \emph{byte di inizio} ed un \emph{byte di fine}.
