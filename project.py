@@ -774,7 +774,7 @@ def runSimulations(mAllocator, mCount):
             exit = rndI(4, 16)
 
             # Generate random required memory for process number i
-            size = rndI(400, 7500)
+            size = rndI(512, 8192)
 
             # Create a process instance and append it to the list
             p = Process(i, enter, exit, size)
@@ -863,7 +863,7 @@ def mainAutomatic(mAllocator):
 
 # Initialize an 'Allocator' an start manual or automatic execution
 def main():
-    size = 10000
+    size = 16384
     allocator = Allocator(size)
     allocator.printInfo()
 
