@@ -28,6 +28,7 @@ graphWidth = consoleWidth
 
 # Open a log file stream
 logFile = open("log.txt", "w")
+logFileColored = open("log_colored.txt", "w")
 
 # Define a class that holds console colors for prettier output
 class Color:
@@ -54,14 +55,17 @@ class Color:
 # Set current color
 def loC(x):
     sys.stdout.write(x)
+    logFileColored.write(x)
 
 # Reset current color
 def loCD():
     sys.stdout.write(Color.default)
+    logFileColored.write(Color.default)
 
 # Print both to log and console
 def lo(x):
     sys.stdout.write(x)
+    logFileColored.write(x)
     x = re.sub("\\033\[.*?m", '', x)
     logFile.write(x)
 
