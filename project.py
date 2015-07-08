@@ -505,10 +505,8 @@ def getInputSimulationCount():
             loC(Color.red)
             lo("\nInserted value invalid - retry\n")
             loCD()
-   
 
     return numSim
-
 
 # Class representing a possible menu choice
 class Choice:
